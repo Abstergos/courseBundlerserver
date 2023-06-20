@@ -44,7 +44,7 @@ const schema = new mongoose.Schema({
         type: Number,
         default: 0,
     }, numOfVideos: {
-        type: String,
+        type: Number,
         default: 0
     }
     , category: {

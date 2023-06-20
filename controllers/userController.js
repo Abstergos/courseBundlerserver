@@ -55,7 +55,7 @@ export const logout = catchAsyncError(async (req, res, next) => {
         expires: new Date(Date.now()),
         httpOnly: true,
         secure: true, // false it while in localhost
-        samesite: "none"
+        sameSite: "none"
     }).json({
         success: true,
         message: "Logged Out Successfully"
@@ -127,6 +127,7 @@ export const updateProfilePicture = catchAsyncError(async (req, res, next) => {
         url: mycloud.secure_url
     }
 
+    await user.save();
     res.status(200).json({
         success: true,
         message: "Profile Picture Updated Successfully"
@@ -147,12 +148,12 @@ export const forgetPassword = catchAsyncError(async (req, res, next) => {
     const message = `Click on the link to reset your password. ${url}. If you have not request then ignore this message`
 
     // sent token via email
-    await sendEmail(user.email, "Course Bundler reset Password", message)
+    await sendEmail(user.email, "CourseBundler Reset Password", message)
     res.status(200).json({
         success: true,
         message: `Reset Token has been sent to ${user.email}`
-    })
-})
+    });
+});
 
 export const resetPassword = catchAsyncError(async (req, res, next) => {
 

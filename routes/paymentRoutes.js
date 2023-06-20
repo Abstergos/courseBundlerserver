@@ -5,15 +5,15 @@ import { buySubscription, cancelSubscription, getrazorPayKey, paymentVerificatio
 const router = express.Router();
 
 // Buy Subscription
-router.route("/subscribe").get(isAuthenticated, buySubscription)
+router.route("/subscribe").get(isAuthenticated, buySubscription);
 
 // Verifiy payment & Save reference in database
-router.route("/paymentverification").post(isAuthenticated, paymentVerification)
+router.route("/paymentverification").post(isAuthenticated, paymentVerification);
 
 // Get razorPay key
-router.route("/razorpaykey").get(getrazorPayKey)
+router.route("/razorpaykey").get(getrazorPayKey);
 
 // Cancel Subsciption
-router.route("/subscribe/cancel").delete(isAuthenticated,cancelSubscription)
+router.route("/subscribe/cancel").delete(isAuthenticated,cancelSubscription);
 
 export default router;

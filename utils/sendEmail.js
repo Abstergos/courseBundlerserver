@@ -1,8 +1,8 @@
-import {createTransport} from "nodemailer";
+import { createTransport } from "nodemailer";
 
-export const sendEmail = async (to,subject,text)=>{
-    
-const transporter = createTransport({
+export const sendEmail = async (to, subject, text) => {
+
+  const transporter = createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
     auth: {
@@ -11,8 +11,8 @@ const transporter = createTransport({
     }
   });
 
-await transporter.sendMail({
-    to,subject,text,
-})
- 
-}
+  await transporter.sendMail({
+    to, subject, text,
+  });
+
+};
